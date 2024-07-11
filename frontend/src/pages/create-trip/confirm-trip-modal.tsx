@@ -36,7 +36,7 @@ export function ConfirmTripModal({
                   className='bg-transparent text-lg placeholder-zinc-400 outline-none flex-1' />
               </div>
 
-              <div className='py-2.5 px-4 bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2'>
+              <div className='h-14 px-4 bg-zinc-950 border-zinc-800 rounded-lg flex items-center gap-2'>
                 <User className='size-5 text-zinc-400' />
                 <input
                   type="email" 

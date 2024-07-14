@@ -5,6 +5,8 @@ import { prisma } from '../lib/prisma'
 import { ClientError } from '../errors/client-error'
 import { env } from '../env'
 
+// quando o participante utiliza o link de confirmação da viagem (confirm-trip)
+
 export async function confirmParticipants(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(
     '/participants/:participantId/confirm',
@@ -24,15 +26,15 @@ export async function confirmParticipants(app: FastifyInstance) {
         }
       })
 
-      if (!participant) {
+      if (!participant) {                 //checa a existencia do participante
         throw new ClientError('Participant not found.')
       }
 
-      if (participant.is_confirmed) {
+      if (participant.is_confirmed) {     //redireciona o participante confimado para a pag da viagem
         return reply.redirect(`${env.WEB_BASE_URL}/trips/${participant.trip_id}`)
       }
 
-      await prisma.participant.update({
+      await prisma.participant.update({     //atualiza o banco de dados
         where: { id: participantId },
         data: { is_confirmed: true }
       })

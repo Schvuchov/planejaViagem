@@ -4,6 +4,8 @@ import { z } from 'zod'
 import { prisma } from '../lib/prisma'
 import { ClientError } from '../errors/client-error'
 
+// rota para listagem dos links
+
 export async function getLinks(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(
     '/trips/:tripId/links',

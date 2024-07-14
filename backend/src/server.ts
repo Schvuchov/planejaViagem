@@ -30,6 +30,7 @@ app.setSerializerCompiler(serializerCompiler)   //fastify zod
 
 app.setErrorHandler(errorHandler)
 
+//cadastro das rotas
 app.register(createTrip)
 app.register(confirmTrip)
 app.register(confirmParticipants)

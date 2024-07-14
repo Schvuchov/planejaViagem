@@ -8,7 +8,7 @@ import { prisma } from '../lib/prisma'
 import { ClientError } from '../errors/client-error'
 import { env } from '../env'
 
-// rota de confirmaçao da viagem
+// rota de confirmaçao da viagem do participante (manda o email)
 
 export async function confirmTrip(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(
@@ -20,15 +20,15 @@ export async function confirmTrip(app: FastifyInstance) {
         }),
       },
     },
-    async (request, reply) => {
+    async (request, reply) => {             //reply serve tbm para poder redirecionar a pag
       const { tripId } = request.params
 
-      const trip = await prisma.trip.findUnique({
+      const trip = await prisma.trip.findUnique({     //verifica a existencia da viagem pelo id
         where: {
           id: tripId,
         },
         include: {
-          participants: {
+          participants: {      //buscar os participantes menos o dono da viagem, que são os que falta para manda o email de confirmação
             where: {
               is_owner: false,
             }
@@ -36,15 +36,15 @@ export async function confirmTrip(app: FastifyInstance) {
         }
       })
 
-      if (!trip) {
+      if (!trip) {                                    //caso não exista a viagem
         throw new ClientError('Trip not found.')
       }
 
-      if (trip.is_confirmed) {
+      if (trip.is_confirmed) {                        //caso a viagem ja tenha sido confirmada
         return reply.redirect(`${env.WEB_BASE_URL}/trips/${tripId}`)
       }
 
-      await prisma.trip.update({
+      await prisma.trip.update({        //atualiza a confirmação da viagem
         where: { id: tripId },
         data: { is_confirmed: true },
       })
@@ -55,7 +55,7 @@ export async function confirmTrip(app: FastifyInstance) {
       const mail = await getMailClient()
 
       await Promise.all(
-        trip.participants.map(async (participant) => {
+        trip.participants.map(async (participant) => {        //usamos async pois queremos um array de promises
           const confirmationLink = `${env.API_BASE_URL}/participants/${participant.id}/confirm`
 
           const message = await mail.sendMail({

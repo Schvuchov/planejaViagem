@@ -4,6 +4,8 @@ import { z } from 'zod'
 import { prisma } from '../lib/prisma'
 import { ClientError } from '../errors/client-error'
 
+//rota de criação dos links importantes da viagem
+
 export async function createLink(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
     '/trips/:tripId/links',

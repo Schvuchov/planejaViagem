@@ -40,6 +40,7 @@ model Participant {
   @@map("participants")
 }
 
+//tabela de Atividades para a viagem
 model Activity {
   id        String   @id @default(uuid())
   title     String
@@ -51,6 +52,7 @@ model Activity {
   @@map("activities")
 }
 
+//tabela para links importantes da viagem
 model Link {
   id    String @id @default(uuid())
   title String

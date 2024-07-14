@@ -5,6 +5,8 @@ import { prisma } from '../lib/prisma'
 import { dayjs } from '../lib/dayjs'
 import { ClientError } from '../errors/client-error'
 
+//criação de atividades para viagem
+
 export async function createActivity(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
     '/trips/:tripId/activities',
@@ -23,15 +25,15 @@ export async function createActivity(app: FastifyInstance) {
       const { tripId } = request.params
       const { title, occurs_at } = request.body
 
-      const trip = await prisma.trip.findUnique({
+      const trip = await prisma.trip.findUnique({     //encontra viagem pelo id
         where: { id: tripId }
       })
 
-      if (!trip) {
+      if (!trip) {                                    //checa existencia da viagem
         throw new ClientError('Trip not found')
       }
-
-      if (dayjs(occurs_at).isBefore(trip.starts_at)) {
+       
+      if (dayjs(occurs_at).isBefore(trip.starts_at)) {      //checagem das datas
         throw new ClientError('Invalid activity date.')
       }
 
@@ -39,7 +41,7 @@ export async function createActivity(app: FastifyInstance) {
         throw new ClientError('Invalid activity date.')
       }
 
-      const activity = await prisma.activity.create({
+      const activity = await prisma.activity.create({       //cria a atividade no banco de dados
         data: {
           title,
           occurs_at,

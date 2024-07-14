@@ -8,6 +8,8 @@ import { prisma } from '../lib/prisma'
 import { ClientError } from '../errors/client-error'
 import { env } from '../env'
 
+// rota de confirmaçao da viagem
+
 export async function confirmTrip(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get(
     '/trips/:tripId/confirm',

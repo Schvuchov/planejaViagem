@@ -25,8 +25,8 @@ app.register(cors, {
   origin: '*',
 })
 
-app.setValidatorCompiler(validatorCompiler)
-app.setSerializerCompiler(serializerCompiler)
+app.setValidatorCompiler(validatorCompiler)     //fastify zod
+app.setSerializerCompiler(serializerCompiler)   //fastify zod
 
 app.setErrorHandler(errorHandler)
 

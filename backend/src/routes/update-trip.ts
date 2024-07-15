@@ -5,6 +5,8 @@ import { prisma } from '../lib/prisma'
 import { dayjs } from '../lib/dayjs'
 import { ClientError } from '../errors/client-error'
 
+// rota para atualizar dados da viagem mesmo apos ela ja ter sido criada
+
 export async function updateTrip(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().put(
     '/trips/:tripId',

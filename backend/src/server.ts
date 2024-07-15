@@ -28,6 +28,7 @@ app.register(cors, {
 app.setValidatorCompiler(validatorCompiler)     //fastify zod
 app.setSerializerCompiler(serializerCompiler)   //fastify zod
 
+//trocando errorHandler padrão do servidor passando um que criamos (error-handler)
 app.setErrorHandler(errorHandler)
 
 //cadastro das rotas

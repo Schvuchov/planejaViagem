@@ -2,8 +2,8 @@
 Desenvolvido durando a NLW - Journey da Rocketseat. Aplicação para planejamento de viagens onde é possível criar viagem com local e data, convidar amigos com confirmação através de email, na página da viagem é criado e listado as atividades para cada dia de viagem, links importantes e convidados.
 
 ## Frontend e Backend
-A aplicação front-end é desenvolvida em ReactJS, fazendo aplicação dos conceitos de Propriedades, Estados e Componentes, tipagem com Typescript, tooling com Vite, interface responsiva com TailwindCSS, consumo de API Node.js, picker de calendário
-O desenvolvimento do back-end em Node.js, com aplicação dos conceitos de API REST, utilizando TypeScript, Fastify como framework, integração do Prisma ORM + SQLite e Zod para validação de dados.
+  - A aplicação front-end é desenvolvida em ReactJS, fazendo aplicação dos conceitos de Propriedades, Estados e Componentes, tipagem com Typescript, tooling com Vite, interface responsiva com TailwindCSS, consumo de API Node.js, picker de calendário
+  - O desenvolvimento do back-end em Node.js, com aplicação dos conceitos de API REST, utilizando TypeScript, Fastify como framework, integração do Prisma ORM + SQLite e Zod para validação de dados.
 
 
 ### Algumas imagens da aplicação

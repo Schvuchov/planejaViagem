@@ -8,7 +8,7 @@ Desenvolvido durando a NLW - Journey da Rocketseat. Aplicação para planejament
 #### Documentação da API
 https://nlw-journey.apidocumentation.com/reference#tag/trips/post/trips
 
-#### Algumas funcionalidades e ajuste
+#### Algumas funcionalidades e ajustes a fazer:
   - Criar componente para input e modal (como o criado para o botão)
   - Fazer a listagens dos link ( como os convidados e atividades)
   - Funcionalidade do botão cadastrar novos links
